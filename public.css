@@ -1,0 +1,463 @@
+/* ═══════════════════════════════════════════
+   public.css — Elegant public roadmap
+═══════════════════════════════════════════ */
+
+/* ── Layout shell ── */
+.pub-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Header / Hero ── */
+.pub-header {
+    padding: 72px 24px 56px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid var(--bdr);
+}
+
+.pub-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--t3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.pub-eyebrow-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--a);
+    box-shadow: 0 0 6px var(--a);
+}
+
+.pub-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--t1);
+    margin-bottom: 14px;
+    animation: fadeUp 0.45s ease 0.05s both;
+}
+
+.pub-title .hl {
+    color: var(--a);
+}
+
+.pub-subtitle {
+    font-size: 0.9375rem;
+    color: var(--t2);
+    max-width: 420px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+    animation: fadeUp 0.45s ease 0.1s both;
+}
+
+/* Stats */
+.pub-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 24px;
+    border: 1px solid var(--bdr);
+    border-radius: var(--r8);
+    overflow: hidden;
+    animation: fadeUp 0.45s ease 0.15s both;
+}
+
+.pub-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 14px 28px;
+    border-right: 1px solid var(--bdr);
+}
+
+.pub-stat:last-child {
+    border-right: none;
+}
+
+.pub-stat-val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--t1);
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.pub-stat-val.accent {
+    color: var(--a);
+}
+
+.pub-stat-lbl {
+    font-size: 0.62rem;
+    color: var(--t3);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+/* Progress bar */
+.pub-progress-wrap {
+    max-width: 360px;
+    margin: 0 auto;
+    animation: fadeUp 0.45s ease 0.2s both;
+}
+
+.pub-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--t3);
+    margin-bottom: 7px;
+}
+
+.pub-progress-pct {
+    color: var(--a);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ── Main content ── */
+.pub-main {
+    flex: 1;
+    max-width: 820px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Empty ── */
+.pub-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding: 64px 24px;
+    border: 1px dashed var(--bdr-hi);
+    border-radius: var(--r8);
+    color: var(--t2);
+}
+
+.pub-empty-icon {
+    font-size: 40px;
+    margin-bottom: 4px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.pub-empty h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--t1);
+    letter-spacing: -0.02em;
+}
+
+.pub-empty p {
+    font-size: 0.875rem;
+    color: var(--t3);
+}
+
+/* ── Section card ── */
+.pub-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.pub-section {
+    background: var(--sur-1);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r8);
+    overflow: hidden;
+    margin-bottom: 12px;
+    transition: var(--ease-slow);
+    animation: fadeUp 0.4s ease both;
+}
+
+.pub-section:hover {
+    border-color: var(--bdr-hi);
+}
+
+/* Section header */
+.pub-sec-head {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--bdr);
+}
+
+.pub-sec-accent {
+    width: 3px;
+    align-self: stretch;
+    flex-shrink: 0;
+    border-radius: 0;
+}
+
+.pub-sec-head-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    gap: 16px;
+}
+
+.pub-sec-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.pub-sec-emoji {
+    font-size: 16px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.pub-sec-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--t1);
+}
+
+.pub-sec-desc {
+    font-size: 0.75rem;
+    color: var(--t3);
+    margin-top: 1px;
+}
+
+.pub-sec-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.pub-sec-counter {
+    font-size: 0.72rem;
+    color: var(--t3);
+    font-family: 'Geist Mono', monospace;
+    white-space: nowrap;
+}
+
+.pub-sec-count-bar {
+    width: 80px;
+    height: 2px;
+    background: var(--sur-3);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.pub-sec-count-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.5s ease;
+}
+
+/* Topic rows */
+.pub-topics {}
+
+.pub-topic {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 20px 11px 23px;
+    border-bottom: 1px solid var(--bdr);
+    transition: background var(--ease);
+}
+
+.pub-topic:last-child {
+    border-bottom: none;
+}
+
+.pub-topic:hover {
+    background: var(--sur-2);
+}
+
+.pub-topic-idx {
+    font-size: 0.68rem;
+    color: var(--t4);
+    font-family: 'Geist Mono', monospace;
+    min-width: 20px;
+    flex-shrink: 0;
+}
+
+.pub-topic.solv .pub-topic-idx {
+    color: var(--easy);
+}
+
+.pub-topic-name {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 450;
+    color: var(--t1);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pub-topic.solv .pub-topic-name {
+    text-decoration: line-through;
+    text-decoration-color: var(--t4);
+    color: var(--t3);
+}
+
+.pub-topic-links {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.pub-link {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: var(--ease);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.pub-link-prob {
+    background: var(--a-dim);
+    color: var(--a);
+    border: 1px solid rgba(139, 120, 255, 0.22);
+}
+
+.pub-link-prob:hover {
+    background: rgba(139, 120, 255, 0.26);
+}
+
+.pub-link-sol {
+    background: var(--sur-2);
+    color: var(--t2);
+    border: 1px solid var(--bdr-hi);
+}
+
+.pub-link-sol:hover {
+    color: var(--t1);
+    border-color: var(--bdr-hi);
+    background: var(--sur-3);
+}
+
+.pub-notes-btn {
+    border: 1px solid var(--bdr);
+    cursor: pointer;
+    background: var(--sur-1);
+    color: var(--t3);
+    font-family: inherit;
+    transition: var(--ease);
+}
+
+.pub-notes-btn:hover {
+    color: var(--t2);
+    border-color: var(--bdr-hi);
+}
+
+/* Expandable notes panel */
+.pub-notes-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.32s ease, padding 0.32s ease;
+    background: var(--sur-1);
+    border-bottom: 1px solid var(--bdr);
+    font-size: 0.8125rem;
+    color: var(--t2);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 0 20px 0 43px;
+}
+
+.pub-notes-panel.open {
+    max-height: 500px;
+    padding: 12px 20px 14px 43px;
+}
+
+
+/* ── Admin FAB ── */
+.admin-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--r4);
+    background: var(--bg-panel);
+    border: 1px solid var(--bdr-hi);
+    color: var(--t3);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--ease);
+    box-shadow: var(--shadow-md);
+    letter-spacing: -0.01em;
+}
+
+.admin-fab:hover {
+    color: var(--t2);
+    border-color: var(--bdr-hi);
+    background: var(--sur-2);
+}
+
+.admin-fab-icon {
+    font-size: 0.82rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .pub-header {
+        padding: 48px 16px 36px;
+    }
+
+    .pub-main {
+        padding: 28px 16px 60px;
+    }
+
+    .pub-stats {
+        flex-wrap: wrap;
+    }
+
+    .pub-stat {
+        padding: 10px 18px;
+    }
+
+    .pub-sec-head-content {
+        padding: 13px 14px;
+    }
+
+    .pub-topic {
+        padding: 10px 14px 10px 17px;
+    }
+
+    .pub-sec-count-bar {
+        display: none;
+    }
+
+    .pub-sec-count-lbl {
+        display: none;
+    }
+}

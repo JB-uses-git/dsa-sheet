@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — JB's DSA Sheet</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+    <!-- ── PASSWORD GATE ── -->
+    <div class="gate" id="gate">
+        <div class="gate-card">
+            <span class="gate-icon">🔑</span>
+            <h1 class="gate-title">Admin Access</h1>
+            <p class="gate-sub">Enter your password to manage the roadmap.</p>
+            <div class="gate-form">
+                <input type="password" class="form-input gate-input" id="gateInput" placeholder="Password"
+                    autocomplete="current-password" />
+                <button class="btn btn-primary gate-btn" id="gateBtn">Unlock</button>
+            </div>
+            <p class="gate-error" id="gateError"></p>
+            <a href="index.html" class="gate-back">← Back to roadmap</a>
+        </div>
+    </div>
+
+    <!-- ── ADMIN PANEL ── -->
+    <div class="admin-wrap" id="adminWrap" style="display:none">
+
+        <!-- Header -->
+        <header class="adm-header">
+            <div class="adm-header-inner">
+                <div class="adm-logo" id="admLogoBtn" title="Double-click to change password">
+                    <div class="adm-logo-mark">⚡</div>
+                    <div>
+                        <div class="adm-logo-title">DSA Admin</div>
+                    </div>
+                </div>
+                <div class="adm-header-right">
+                    <div class="adm-prog-pill">
+                        <span class="adm-prog-label">Progress</span>
+                        <div class="adm-prog-bar">
+                            <div class="adm-prog-fill" id="admBar"></div>
+                        </div>
+                        <span class="adm-prog-pct" id="admPct">0%</span>
+                    </div>
+                    <a href="index.html" class="btn btn-ghost btn-sm" target="_blank">↗&thinsp;View Public</a>
+                    <button class="btn btn-ghost btn-sm" id="lockBtn">Lock</button>
+                    <button class="btn btn-primary btn-sm" id="addSectionBtn">+ Section</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="adm-stats">
+            <div class="stat-card"><span class="stat-val" id="aSections">0</span><span class="stat-lbl">Sections</span>
+            </div>
+            <div class="stat-card"><span class="stat-val" id="aTopics">0</span><span class="stat-lbl">Topics</span>
+            </div>
+            <div class="stat-card"><span class="stat-val" id="aDone">0</span><span class="stat-lbl">Completed</span>
+            </div>
+            <div class="stat-card"><span class="stat-val" id="aPending">0</span><span class="stat-lbl">Remaining</span>
+            </div>
+        </div>
+
+        <!-- Main -->
+        <main class="adm-main">
+            <div class="empty-state" id="admEmpty">
+                <div class="empty-icon">📋</div>
+                <h2>No sections yet</h2>
+                <p>Create your first section to start building the roadmap.</p>
+                <button class="btn btn-primary btn-lg" id="admEmptyBtn">+ Add Section</button>
+            </div>
+            <div class="adm-grid" id="admGrid"></div>
+        </main>
+
+        <!-- ── MODALS ── -->
+
+        <!-- Section Modal -->
+        <div class="modal-overlay" id="sectionModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="sectionModalTitle">Add Section</h2>
+                    <button class="modal-close" id="closeSectionModal">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Title *</label>
+                        <input type="text" class="form-input" id="sectionTitle" placeholder="e.g. Arrays & Strings"
+                            maxlength="60" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Emoji</label>
+                            <input type="text" class="form-input emoji-input" id="sectionEmoji" placeholder="📌"
+                                maxlength="4" />
+                        </div>
+                        <div class="form-group" style="flex:1">
+                            <label class="form-label">Quick pick</label>
+                            <div class="emoji-presets" id="emojiPresets"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Accent color</label>
+                        <div class="color-picker" id="colorPicker"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description <span class="form-opt">(optional)</span></label>
+                        <textarea class="form-input form-textarea" id="sectionDesc"
+                            placeholder="Brief description of this section..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-ghost" id="cancelSectionModal">Cancel</button>
+                    <button class="btn btn-primary" id="saveSectionBtn">Save section</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic Modal -->
+        <div class="modal-overlay" id="topicModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="topicModalTitle">Add Topic</h2>
+                    <button class="modal-close" id="closeTopicModal">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Topic name *</label>
+                        <input type="text" class="form-input" id="topicName" placeholder="e.g. Two Sum"
+                            maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Problem link <span class="form-opt">(optional)</span></label>
+                        <input type="url" class="form-input" id="topicLink"
+                            placeholder="https://leetcode.com/problems/..." />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Solution / notes link <span class="form-opt">(optional)</span></label>
+                        <input type="url" class="form-input" id="topicNoteLink" placeholder="https://github.com/..." />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notes <span class="form-opt">(optional)</span></label>
+                        <textarea class="form-input form-textarea" id="topicNotes"
+                            placeholder="Complexity, key patterns, observations..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-ghost" id="cancelTopicModal">Cancel</button>
+                    <button class="btn btn-primary" id="saveTopicBtn">Save topic</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal-overlay" id="deleteModal">
+            <div class="modal modal-sm">
+                <div class="modal-header">
+                    <h2 class="modal-title">Confirm delete</h2>
+                    <button class="modal-close" id="closeDeleteModal">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p class="delete-msg" id="deleteMsg">Are you sure you want to delete this?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-ghost" id="cancelDeleteModal">Cancel</button>
+                    <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Modal -->
+        <div class="modal-overlay" id="pwdModal">
+            <div class="modal modal-sm">
+                <div class="modal-header">
+                    <h2 class="modal-title">Change password</h2>
+                    <button class="modal-close" id="closePwdModal">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Current password</label>
+                        <input type="password" class="form-input" id="pwdCurrent" placeholder="Current password" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">New password</label>
+                        <input type="password" class="form-input" id="pwdNew"
+                            placeholder="New password (min 4 chars)" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm password</label>
+                        <input type="password" class="form-input" id="pwdConfirm" placeholder="Confirm new password" />
+                    </div>
+                    <p class="gate-error" id="pwdError"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-ghost" id="cancelPwdModal">Cancel</button>
+                    <button class="btn btn-primary" id="savePwdBtn">Update</button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /admin-wrap -->
+
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+</body>
+
+</html>

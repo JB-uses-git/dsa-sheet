@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JB's DSA Roadmap</title>
+    <meta name="description"
+        content="JB's personal Data Structures & Algorithms roadmap — curated topics, resources, and progress." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="shared.css" />
+    <link rel="stylesheet" href="public.css" />
+</head>
+
+<body>
+    <div class="bg-canvas"></div>
+
+    <div class="pub-wrap">
+
+        <!-- Hero Header -->
+        <header class="pub-header">
+            <div class="pub-eyebrow">
+                <span class="pub-eyebrow-dot"></span>
+                Data Structures & Algorithms
+            </div>
+
+            <h1 class="pub-title">JB's <span class="hl">DSA</span> Roadmap</h1>
+            <p class="pub-subtitle">A curated collection of problems, patterns, and resources — tracking progress one
+                topic at a time.</p>
+
+            <!-- Stats -->
+            <div class="pub-stats">
+                <div class="pub-stat">
+                    <span class="pub-stat-val" id="pSections">–</span>
+                    <span class="pub-stat-lbl">Sections</span>
+                </div>
+                <div class="pub-stat">
+                    <span class="pub-stat-val" id="pTopics">–</span>
+                    <span class="pub-stat-lbl">Topics</span>
+                </div>
+                <div class="pub-stat">
+                    <span class="pub-stat-val" id="pDone">–</span>
+                    <span class="pub-stat-lbl">Solved</span>
+                </div>
+                <div class="pub-stat">
+                    <span class="pub-stat-val accent" id="pPct">0%</span>
+                    <span class="pub-stat-lbl">Complete</span>
+                </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="pub-progress-wrap">
+                <div class="pub-progress-label">
+                    <span>Overall progress</span>
+                    <span class="pub-progress-pct" id="pubPct">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="pubGlobalFill"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Roadmap sections -->
+        <main class="pub-main" id="pubMain">
+            <div class="pub-empty" id="pubEmpty" style="display:none">
+                <div class="pub-empty-icon">🗺️</div>
+                <h2>Roadmap is being built</h2>
+                <p>Check back soon — topics are being added.</p>
+            </div>
+            <div class="pub-sections" id="pubSections"></div>
+        </main>
+
+    </div>
+
+    <!-- Admin link -->
+    <a href="admin.html" class="admin-fab" title="Admin Panel">
+        <span class="admin-fab-icon">⚙</span>
+        <span>Manage</span>
+    </a>
+
+    <script src="data.js"></script>
+    <script src="public.js"></script>
+</body>
+
+</html>
